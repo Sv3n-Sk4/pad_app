@@ -14,7 +14,7 @@ import shap
 st.write("# App Prêt à Dépenser")
 
 st.image(
-            "https://raw.githubusercontent.com/Sv3n-Sk4/pad_heroku/main/Images/PAD.png", 
+            "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/PAD.png", 
             use_column_width=True
         )
 
@@ -27,7 +27,7 @@ Les données sont disponibles via ce [Kaggle](https://www.kaggle.com/c/home-cred
 st.sidebar.header('Données client à utiliser')
 
 st.sidebar.markdown("""
-[Exemple de fichier CSV à renseigner](https://raw.githubusercontent.com/Sv3n-Sk4/pad_heroku/main/data_exemple.csv) 
+[Exemple de fichier CSV à renseigner](https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv) 
 """)
 
 # Collects user input features into dataframe
@@ -35,11 +35,11 @@ uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["c
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 else:
-    url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_heroku/main/data_exemple.csv"
+    url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
     input_df = pd.read_csv(url)
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
-model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_heroku/main/model_data.csv"
+model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
 data_raw = pd.read_csv(model_data)
 data = data_raw.drop(columns=['TARGET'])
 
@@ -87,7 +87,7 @@ elif input_df['CODE_GENDER'][0] == "M":
 else:
    st.write("Le sexe du client n'est pas renseigné.") 
 
-data_graph = pd.read_csv('https://media.githubusercontent.com/media/Sv3n-Sk4/pad_heroku/main/model_data.csv')
+data_graph = pd.read_csv('https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv')
 
 # Création du graphique de défaillance selon le sexe du client
 data_graph = data_graph[-data_graph["CODE_GENDER"].isin(["XNA"])]
@@ -242,7 +242,7 @@ st.write("""Afin de mieux comprendre les résultats obtenus et d'expliquer au cl
 
 #     # INTEGRATION DE LIME ET SHAP
             
-#     datawithoutnan = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_heroku/main/datawithoutnan.csv"
+#     datawithoutnan = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/datawithoutnan.csv"
 #     data_lime = pd.read_csv(datawithoutnan)
 
 #     common_columns = [col for col in input_df.columns if col in data_lime.columns]
