@@ -356,14 +356,14 @@ if graph_display:
 
 #     st.write("")
 #     st.write("Analyse Lime du client : ") 
-#     st.write("")  
+#     st.write("")            
       
-      st.write("")
-      st.write("Analyse Lime du client : ") 
-      st.write(https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html)  
+    st.write("")
+    st.write("Analyse Lime du client : ") 
+    st.write(https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html)  
           
     components.html("https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html", width=200, height=200)
-
+            
 #     HtmlFile = open("https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/limeexport.html", 'r', encoding='utf-8')
 #     source_code = HtmlFile.read() 
 #     print(source_code)
