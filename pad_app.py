@@ -217,137 +217,158 @@ st.write("""Afin de mieux comprendre les résultats obtenus et d'expliquer au cl
 graph_display = st.button("Affichage des graphiques d'interprétation")
 
 if graph_display:
-    # Lecture du modèle seul (LIME et SHAP fonctionnant mal avec un pipeline)
-    model_lgbm = pickle.load(open('model_lgbm.pkl', 'rb'))
+#     # Lecture du modèle seul (LIME et SHAP fonctionnant mal avec un pipeline)
+#     model_lgbm = pickle.load(open('model_lgbm.pkl', 'rb'))
 
-    # Utilisation de la partie graphique à l'aide de Pycaret (usuellement utilisé pour sélectionner des modèles)
-    from pycaret.classification import * 
-    df_lgbm = feat_engi(data_raw)
-    clf = setup(df_lgbm, target='TARGET', session_id=42, silent=True, fix_imbalance=True)
-    lgbm2 = create_model(model_lgbm, cross_validation = False)
+#     # Utilisation de la partie graphique à l'aide de Pycaret (usuellement utilisé pour sélectionner des modèles)
+#     from pycaret.classification import * 
+#     df_lgbm = feat_engi(data_raw)
+#     clf = setup(df_lgbm, target='TARGET', session_id=42, silent=True, fix_imbalance=True)
+#     lgbm2 = create_model(model_lgbm, cross_validation = False)
 
-    # Retirer les commentaires pour nouveau plot
-    plot_model(lgbm2, plot = 'feature', save=True)
+#     # Retirer les commentaires pour nouveau plot
+#     plot_model(lgbm2, plot = 'feature', save=True)
 
-    # ##VOIR POUR SUPPRIMER LES PRECEDENTS GRAPHS
-    # # Retirer les commentaires pour nouveau SHAP Summary
-    # interpret_model(lgbm2, save=True)
+#     st.write("")
+#     st.write("Voici les variables les plus importantes de notre modèle : ") 
+#     st.write("")
+#     st.image(
+#                 "Feature Importance.png", 
+#                 use_column_width=True
+#             )
 
     st.write("")
     st.write("Voici les variables les plus importantes de notre modèle : ") 
     st.write("")
     st.image(
-                "Feature Importance.png",
+                "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/Feature Importance.png",
                 use_column_width=True
             )
 
 
-    # INTEGRATION DE LIME ET SHAP
+#     # INTEGRATION DE LIME ET SHAP
             
-    datawithoutnan = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/datawithoutnan25.csv"
-    data_lime = pd.read_csv(datawithoutnan)
+#     datawithoutnan = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/datawithoutnan25.csv"
+#     data_lime = pd.read_csv(datawithoutnan)
 
-    common_columns = [col for col in input_df.columns if col in data_lime.columns]
-    input_df = input_df[common_columns]
-    dflime = pd.concat([input_df,data_lime],axis=0)
+#     common_columns = [col for col in input_df.columns if col in data_lime.columns]
+#     input_df = input_df[common_columns]
+#     dflime = pd.concat([input_df,data_lime],axis=0)
 
-    dflime_efe = feat_engi(dflime)
-    # dfl = dflime_efe[:1] # Selects only the first row (the user input data)
+#     dflime_efe = feat_engi(dflime)
+#     # dfl = dflime_efe[:1] # Selects only the first row (the user input data)
 
-    def cat_list(df):
-        dummies = []
+#     def cat_list(df):
+#         dummies = []
 
-        for col in df.columns:
-            if df[col].dtype == 'object':
-                    dummies.append(str(col))
+#         for col in df.columns:
+#             if df[col].dtype == 'object':
+#                     dummies.append(str(col))
             
-        return dummies
+#         return dummies
 
-    dummies = cat_list(dflime_efe)
+#     dummies = cat_list(dflime_efe)
 
-    encoded = pd.get_dummies(dflime_efe[dummies], drop_first=True)
-    dflime_efe = dflime_efe.drop(dummies, axis=1)
-    dflime_efe = dflime_efe.join(encoded)
+#     encoded = pd.get_dummies(dflime_efe[dummies], drop_first=True)
+#     dflime_efe = dflime_efe.drop(dummies, axis=1)
+#     dflime_efe = dflime_efe.join(encoded)
 
-    dfl = dflime_efe[:1] # Selects only the first row (the user input data)
-    dfl = dfl.drop(['TARGET'], axis=1)
+#     dfl = dflime_efe[:1] # Selects only the first row (the user input data)
+#     dfl = dfl.drop(['TARGET'], axis=1)
 
-    dflime_efe = dflime_efe.fillna(dflime_efe.mean())
+#     dflime_efe = dflime_efe.fillna(dflime_efe.mean())
     
-    # #Supprimer les premiers rangs redondants
-    dflime_efe = dflime_efe.iloc[3:]
+#     # #Supprimer les premiers rangs redondants
+#     dflime_efe = dflime_efe.iloc[3:]
 
-    from sklearn.model_selection import train_test_split
+#     from sklearn.model_selection import train_test_split
 
-    import re
-    dflime_efe = dflime_efe.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+#     import re
+#     dflime_efe = dflime_efe.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
 
-    y = dflime_efe['TARGET']
-    X = dflime_efe.drop(['TARGET'], axis=1)
+#     y = dflime_efe['TARGET']
+#     X = dflime_efe.drop(['TARGET'], axis=1)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    model_lgbm.fit(X_train, y_train)
+#     model_lgbm.fit(X_train, y_train)
 
-    test_1 = dfl.iloc[0]
+#     test_1 = dfl.iloc[0]
     
-    shap_explainer = shap.TreeExplainer(model_lgbm)
-    shap_values = shap_explainer.shap_values(X)
+#     shap_explainer = shap.TreeExplainer(model_lgbm)
+#     shap_values = shap_explainer.shap_values(X)
     
-    # nettoyage des graphs
-    plt.figure().clear()
-    plt.close()
-    plt.cla()
-    plt.clf()
-    fig.clear(True)
-    ax.clear() 
+#     # nettoyage des graphs
+#     plt.figure().clear()
+#     plt.close()
+#     plt.cla()
+#     plt.clf()
+#     fig.clear(True)
+#     ax.clear() 
 
-    shap.summary_plot(shap_values, X_train, plot_size=(20,20), show=False)
-    plt.savefig("summary_plot.png")
-    plt.close()
+#     shap.summary_plot(shap_values, X_train, plot_size=(20,20), show=False)
+#     plt.savefig("summary_plot.png")
+#     plt.close()
+
+#     st.write("")
+#     st.write("Le Summary Plot : ") 
+#     st.write("")
+#     st.image(
+#                 "summary_plot.png",
+#                 use_column_width=True
+#             )
 
     st.write("")
-    st.write("Le Summary Plot : ") 
+    st.write("Voici les variables les plus importantes de notre modèle : ") 
     st.write("")
     st.image(
-                "summary_plot.png",
+                "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/summary_plot.png",
                 use_column_width=True
             )
 
-    import lime 
-    from lime import lime_tabular
+#     import lime 
+#     from lime import lime_tabular
 
-    lime_explainer = lime_tabular.LimeTabularExplainer(
-        training_data=np.array(X_train),
-        feature_names=X_train.columns,
-        class_names=['Non Défaillant', 'Défaillant'],
-        mode='classification'
-    )
+#     lime_explainer = lime_tabular.LimeTabularExplainer(
+#         training_data=np.array(X_train),
+#         feature_names=X_train.columns,
+#         class_names=['Non Défaillant', 'Défaillant'],
+#         mode='classification'
+#     )
 
-    lime_exp = lime_explainer.explain_instance(
-        data_row=test_1,
-        predict_fn=model_lgbm.predict_proba
-    )
+#     lime_exp = lime_explainer.explain_instance(
+#         data_row=test_1,
+#         predict_fn=model_lgbm.predict_proba
+#     )
 
-    lime_exp.save_to_file('limeexport.html')
+#     lime_exp.save_to_file('limeexport.html')
 
-    import streamlit.components.v1 as components
+#     import streamlit.components.v1 as components
+
+#     st.write("")
+#     st.write("Analyse Lime du client : ") 
+#     st.write("")
+
+#     HtmlFile = open("limeexport.html", 'r', encoding='utf-8')
+#     source_code = HtmlFile.read() 
+#     print(source_code)
+#     components.html(source_code)
 
     st.write("")
     st.write("Analyse Lime du client : ") 
-    st.write("")
+    st.write("")           
 
-    HtmlFile = open("limeexport.html", 'r', encoding='utf-8')
+    HtmlFile = open("https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/limeexport.html.png", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     print(source_code)
     components.html(source_code)
 
-    def st_shap(plot, height=None):
-        shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-        components.html(shap_html, height=height)
+#     def st_shap(plot, height=None):
+#         shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+#         components.html(shap_html, height=height)
 
-    st.write("")
-    st.write("Analyse SHAP du client : ") 
-    st.write("")
+#     st.write("")
+#     st.write("Analyse SHAP du client : ") 
+#     st.write("")
 
-    st_shap(shap.force_plot(shap_explainer.expected_value[0], shap_values[0][1, :], test_1))
+#     st_shap(shap.force_plot(shap_explainer.expected_value[0], shap_values[0][1, :], test_1))
