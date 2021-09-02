@@ -360,7 +360,7 @@ if graph_display:
       
     st.write("")
     st.write("Analyse Lime du client : ") 
-    st.write(https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html)  
+#     st.write(https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html)  
           
     components.html("https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html", width=200, height=200)
             
