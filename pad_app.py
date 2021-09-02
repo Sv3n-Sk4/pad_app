@@ -358,7 +358,7 @@ if graph_display:
     st.write("Analyse Lime du client : ") 
     st.write("")           
 
-    HtmlFile = open("https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/limeexport.html.png", 'r', encoding='utf-8')
+    HtmlFile = open("https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/limeexport.html", 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     print(source_code)
     components.html(source_code)
