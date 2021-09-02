@@ -193,20 +193,20 @@ plt.clf()
 fig.clear(True)
 ax.clear()  
 
-# # Lecture du pipeline
-# load_clf = pickle.load(open('data_clf.pkl', 'rb'))
+# Lecture du pipeline
+load_clf = pickle.load(open('data_clf.pkl', 'rb'))
 
-# # Application pour prédictions
-# prediction = load_clf.predict(df)
-# prediction_proba = load_clf.predict_proba(df)
+# Application pour prédictions
+prediction = load_clf.predict(df)
+prediction_proba = load_clf.predict_proba(df)
 
-# # Affichage des prédictions du modèle
-# st.subheader('Prédiction')
-# defaillance = np.array(['0','1'])
-# st.write(defaillance[prediction])
+# Affichage des prédictions du modèle
+st.subheader('Prédiction')
+defaillance = np.array(['0','1'])
+st.write(defaillance[prediction])
 
-# st.subheader('Probabilités')
-# st.write(prediction_proba)
+st.subheader('Probabilités')
+st.write(prediction_proba)
 
 
 st.write("### Interprétabilité de la prédiction")
