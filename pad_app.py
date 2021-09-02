@@ -39,7 +39,8 @@ else:
     input_df = pd.read_csv(url)
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
-model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
+# model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
+model_data = "http://media.githubusercontent.com/media/sfbrigade/datasci-home-credit-default/master/src/home-credit-default-risk/application_train.csv"
 data_raw = pd.read_csv(model_data)
 data = data_raw.drop(columns=['TARGET'])
 
@@ -87,7 +88,8 @@ elif input_df['CODE_GENDER'][0] == "M":
 else:
    st.write("Le sexe du client n'est pas renseigné.") 
 
-data_graph = pd.read_csv('https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv')
+# data_graph = pd.read_csv('https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv')
+data_graph = pd.read_csv(model_data)
 
 # Création du graphique de défaillance selon le sexe du client
 data_graph = data_graph[-data_graph["CODE_GENDER"].isin(["XNA"])]
