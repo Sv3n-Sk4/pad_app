@@ -244,7 +244,7 @@ st.write("""Afin de mieux comprendre les résultats obtenus et d'expliquer au cl
 
 #     # INTEGRATION DE LIME ET SHAP
             
-#     datawithoutnan = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/datawithoutnan.csv"
+#     datawithoutnan = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/datawithoutnan25.csv"
 #     data_lime = pd.read_csv(datawithoutnan)
 
 #     common_columns = [col for col in input_df.columns if col in data_lime.columns]
