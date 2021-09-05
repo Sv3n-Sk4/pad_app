@@ -30,6 +30,19 @@ st.sidebar.markdown("""
 [Exemple de fichier CSV à renseigner](https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv) 
 """)
 
+#NEW PART
+dataselect = pd.read_csv(model_data)
+
+# Create a list of possible values and multiselect menu with them in it.
+SKID = dataselect['SK_ID_CURR'].unique()
+SKID_SELECTED = st.sidebar.multiselect('Select ID', SKID)
+
+# Mask to filter dataframe
+mask_skid = dataselect['SK_ID_CURR'].isin(SKID_SELECTED)
+
+inputdata = dataselect[mask_skid]
+#END OF NEW PART
+
 # Collects user input features into dataframe
 uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
 if uploaded_file is not None:
