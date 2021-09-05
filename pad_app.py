@@ -30,35 +30,17 @@ st.sidebar.markdown("""
 [Exemple de fichier CSV à renseigner](https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv) 
 """)
 
-#NEW PART
-model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
-dataselect = pd.read_csv(model_data)
-
-selected_indice = st.sidebar.selectbox('Select rows', dataselect.SK_ID_CURR)
-
-# # Create a list of possible values and multiselect menu with them in it.
-# SKID = dataselect['SK_ID_CURR'].unique()
-# SKID_SELECTED = st.sidebar.multiselect('Select ID', SKID)
-
-# # Mask to filter dataframe
-# mask_skid = dataselect['SK_ID_CURR'].isin(SKID_SELECTED)
-
-# inputdata = dataselect[mask_skid]
-#END OF NEW PART
-
 # Collects user input features into dataframe
 uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
-elif selected_indice is not None:
-    input_df = selected_indice       
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
     input_df = pd.read_csv(url)
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
 # model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
-# model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
+model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
 data_raw = pd.read_csv(model_data)
 data = data_raw.drop(columns=['TARGET'])
 
