@@ -30,7 +30,7 @@ Les données sont disponibles via ce [Kaggle](https://www.kaggle.com/c/home-cred
 
 st.sidebar.header('Fonctionnement')
 st.write("L'objectif étant d'étudier les caractéristiques d'un nouvel éventuel emprunteur il convient : ")
-st.write("""d'uploader les informations d'un nouveau client afin d'étudier ses capacités de remboursement en amont d'un possibl futur emprunt.")
+st.write("d'uploader les informations d'un nouveau client afin d'étudier ses capacités de remboursement en amont d'un possible futur emprunt.")
 
 st.sidebar.header('Données client à utiliser')
 
