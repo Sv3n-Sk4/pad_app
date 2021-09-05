@@ -31,6 +31,7 @@ st.sidebar.markdown("""
 """)
 
 #NEW PART
+model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
 dataselect = pd.read_csv(model_data)
 
 # Create a list of possible values and multiselect menu with them in it.
@@ -53,7 +54,7 @@ else:
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
 # model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
-model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
+# model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
 data_raw = pd.read_csv(model_data)
 data = data_raw.drop(columns=['TARGET'])
 
