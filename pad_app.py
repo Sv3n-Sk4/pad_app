@@ -50,7 +50,7 @@ selected_indice = st.sidebar.multiselect('Select rows', dataselect.SK_ID_CURR)
 uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
-elif mask_skid is not None:
+elif selected_indice is not None:
     input_df = selected_indice       
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
