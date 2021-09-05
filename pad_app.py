@@ -13,7 +13,7 @@ import shap
 
 st.write("# App Prêt à Dépenser")
 
-st.markdown("_Il s'agit ici d'une version de démonstration avec certaines limitations compte tenu du déploiement effectué sur des hébergeurs gratuits_")
+st.markdown("_Il s'agit ici d'une version de démonstration avec certaines limitations compte tenu du déploiement effectué sur des hébergeurs gratuits._")
 st.markdown("_Contraintes et limitations à la fois quant à la puissance de calcul et le stockage._")
 
 st.image(
@@ -24,10 +24,13 @@ st.image(
 st.write("""Cette app est une aide à la décision en matière d'octroi de crédit.
 Elle cherche à prédire si un emprunteur pourrait présenter une défaillance.
 
-Les données sont disponibles via ce [Kaggle](https://www.kaggle.com/c/home-credit-default-risk/data) et fournies par Home Credit.
+Les données sont disponibles via ce [Kaggle](https://www.kaggle.com/c/home-credit-default-risk/data) et fournies par Home Credit. 
 
-Fonctionnement : Uploader les informations d'un nouveau client afin d'étudier ses capacités de remboursement en amont d'un éventuel emprunt.
 """)
+
+st.sidebar.header('Fonctionnement')
+st.write("L'objectif étant d'étudier les caractéristiques d'un nouvel éventuel emprunteur il convient : ")
+st.write("""d'uploader les informations d'un nouveau client afin d'étudier ses capacités de remboursement en amont d'un possibl futur emprunt.")
 
 st.sidebar.header('Données client à utiliser')
 
@@ -210,21 +213,20 @@ st.subheader('Prédiction')
 defaillance = np.array(['0','1'])
 st.write(defaillance[prediction])
 
-st.write("""
-0 : Le client aura davantage tendance à ne pas être défaillant.
-1 : Le client aura davantage tendance à être défaillant.
-""")
+st.write("0 : Le client aura davantage tendance à ne pas être défaillant.")
+st.write("1 : Le client aura davantage tendance à être défaillant.")
 
 st.subheader('Probabilités')
 st.write(prediction_proba)
 
+st.write("L'affichage des propabilités permet de mieux appréhender dans quelles proportions le client est potentiellement défaillant.")
+
 
 st.write("### Interprétabilité de la prédiction")
 st.write("""Afin de mieux comprendre les résultats obtenus et d'expliquer au client-emprunteur la prédiction, vous pouvez cliquer sur le bouton ci-dessous pour afficher des graphiques d'aide à l'interprétation.
-(Attention l'exécution de cette action peut prendre jusqu'à une trentaine de minutes.)
 """)
 
-st.markdown("_Compte tenu des contraintes abordées précédemment, la partie ci-dessous est ici figée (mais s'affiche très rapidement et fonctionne en local_")
+st.markdown("_Compte tenu des contraintes abordées précédemment, la partie ci-dessous est ici figée (mais fonctionne en local)_")
 
 graph_display = st.button("Affichage des graphiques d'interprétation")
 
@@ -250,7 +252,7 @@ if graph_display:
 #             )
 
     st.write("")
-    st.write("Ce premier graphique nous permet de montrer l'importance des variables les unes par rapport aux autres : ") 
+    st.write("Permet d'expliquer au client les facteurs primordiaux de notre modèle d'analyse : ") 
     st.write("")
     st.image(
                 "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/Feature Importance.png",
@@ -331,7 +333,7 @@ if graph_display:
 #             )
 
     st.write("")
-    st.write("Voici les variables avec leur importance de pondération selon une éventuelle défaillance ou non défaillance : ") 
+    st.write("Permet d'expliquer l'importance ou négative des différentes variables : ") 
     st.write("")
     st.image(
                 "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/summary_plot.png",
@@ -371,7 +373,7 @@ if graph_display:
 #     st.write("")   
 
     st.write("")
-    st.write("Lime nous permet de déterminer également une probabilité de défaillance : ") 
+    st.write("Lime permet de déterminer également une probabilité de défaillance : ") 
     st.markdown("_Les résultats différent compte tenu de la contrainte de stockage des données._")
     st.write("")
     st.image(
@@ -395,7 +397,7 @@ if graph_display:
 #     st_shap(shap.force_plot(shap_explainer.expected_value[0], shap_values[0][1, :], test_1))
 
     st.write("")
-    st.write("Voici l'analyse SHAP qui nous permet d'étudier l'influence des variables quant au résultat de prédiction apporté à l'individu : ") 
+    st.write("SHAP permet de donner le détail au client de l'influence de ses caractéristiques pour obtenir notre prédiction : ") 
     st.write("")
     st.image(
                 "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/shap.PNG",
