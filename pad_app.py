@@ -356,13 +356,15 @@ if graph_display:
 
 #     st.write("")
 #     st.write("Analyse Lime du client : ") 
-#     st.write("")            
-      
+#     st.write("")   
+
     st.write("")
-    st.write("Analyse Lime du client : ") 
-#     st.write(https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html)  
-          
-    components.html("https://htmlpreview.github.io/?https://github.com/Sv3n-Sk4/pad_app/blob/main/Images/limeexport.html", width=200, height=200)
+    st.write("Voici les variables les plus importantes de notre modèle : ") 
+    st.write("")
+    st.image(
+                "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/lime.png",
+                use_column_width=True
+            )
             
 #     HtmlFile = open("https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/limeexport.html", 'r', encoding='utf-8')
 #     source_code = HtmlFile.read() 
@@ -378,3 +380,11 @@ if graph_display:
 #     st.write("")
 
 #     st_shap(shap.force_plot(shap_explainer.expected_value[0], shap_values[0][1, :], test_1))
+
+    st.write("")
+    st.write("Voici les variables les plus importantes de notre modèle : ") 
+    st.write("")
+    st.image(
+                "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/Images/shap.PNG",
+                use_column_width=True
+            )
