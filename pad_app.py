@@ -48,7 +48,7 @@ inputdata = dataselect[mask_skid]
 uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
-elif:
+elif mask_skid is not None:
     input_df = mask_skid       
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
