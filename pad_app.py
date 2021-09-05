@@ -34,7 +34,7 @@ st.sidebar.markdown("""
 model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
 dataselect = pd.read_csv(model_data)
 
-selected_indice = st.sidebar.multiselect('Select rows', dataselect.SK_ID_CURR)
+selected_indice = st.sidebar.selectbox('Select rows', dataselect.SK_ID_CURR)
 
 # # Create a list of possible values and multiselect menu with them in it.
 # SKID = dataselect['SK_ID_CURR'].unique()
