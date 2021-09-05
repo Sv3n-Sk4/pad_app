@@ -49,7 +49,7 @@ uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["c
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 elif mask_skid is not None:
-    input_df = mask_skid       
+    input_df = mask_skid.to_frame()       
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
     input_df = pd.read_csv(url)
