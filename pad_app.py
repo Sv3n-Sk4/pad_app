@@ -34,14 +34,16 @@ st.sidebar.markdown("""
 model_data = "https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/model_data.csv"
 dataselect = pd.read_csv(model_data)
 
-# Create a list of possible values and multiselect menu with them in it.
-SKID = dataselect['SK_ID_CURR'].unique()
-SKID_SELECTED = st.sidebar.multiselect('Select ID', SKID)
+selected_indice = st.sidebar.multiselect('Select rows', dataselect.SK_ID_CURR)
 
-# Mask to filter dataframe
-mask_skid = dataselect['SK_ID_CURR'].isin(SKID_SELECTED)
+# # Create a list of possible values and multiselect menu with them in it.
+# SKID = dataselect['SK_ID_CURR'].unique()
+# SKID_SELECTED = st.sidebar.multiselect('Select ID', SKID)
 
-inputdata = dataselect[mask_skid]
+# # Mask to filter dataframe
+# mask_skid = dataselect['SK_ID_CURR'].isin(SKID_SELECTED)
+
+# inputdata = dataselect[mask_skid]
 #END OF NEW PART
 
 # Collects user input features into dataframe
@@ -49,7 +51,7 @@ uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["c
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
 elif mask_skid is not None:
-    input_df = mask_skid.to_frame()       
+    input_df = selected_indice       
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
     input_df = pd.read_csv(url)
