@@ -10,3 +10,6 @@ Enfin sont présent les images pour l'application, les requirements et setup pou
 L'application est disponible à l'adresse suivante :
 
 https://share.streamlit.io/sv3n-sk4/pad_app/main/pad_app.py
+
+L'application a été développée dans une optique entreprise (PAD) - conseiller - client.
+Le but est ici d'intégrer par le conseiller, les données d'un client via l'apport d'un fichier csv (ou en le selectionnant dans un menu déroulant) puis l'application s'exécute pour donner la prédiction de solvabilité et des interprétations pour permettre au conseiller d'offrir des explications au client quant au résultat obtenu.
