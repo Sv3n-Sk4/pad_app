@@ -44,34 +44,34 @@ st.sidebar.markdown("""
 # attribute is a string
 otherloaner = st.sidebar.selectbox('Choisissez un individu', ['Emprunteur 1', 'Emprunteur 2','Emprunteur 3','Emprunteur 4','Emprunteur 5','Emprunteur 6','Emprunteur 7'])
 
-if otherloaner == 'Emprunteur 1':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID293123.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 2':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID293684.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 3':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID336604.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 4':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID433119.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 5':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID453986.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 6':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID454212.csv"
-    input_df = pd.read_csv(urlE)
-if otherloaner == 'Emprunteur 7':
-    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID455607.csv"
-    input_df = pd.read_csv(urlE)
-
 # Collects user input features into dataframe
 uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
 if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
+elif otherloaner == 'Emprunteur 1':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID293123.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 2':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID293684.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 3':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID336604.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 4':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID433119.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 5':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID453986.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 6':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID454212.csv"
+    input_df = pd.read_csv(urlE)
+elif otherloaner == 'Emprunteur 7':
+    urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID455607.csv"
+    input_df = pd.read_csv(urlE)
 else:
     url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
+    # url="https://raw.githubusercontent.com/Sv3n-Sk4/PAD/main/data_exemple_train.csv"
     input_df = pd.read_csv(url)
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
