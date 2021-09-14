@@ -38,13 +38,7 @@ st.sidebar.markdown("""
 [Exemple de fichier CSV à renseigner](https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv) 
 """)
 
-# Collects user input features into dataframe
-uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
-if uploaded_file is not None:
-    input_df = pd.read_csv(uploaded_file)
-else:
-    url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
-    input_df = pd.read_csv(url)
+
             
 #NOUVELLE TENTATIVE
 # attribute is a string
@@ -72,7 +66,13 @@ if otherloaner == 'Emprunteur 7':
     urlE="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/submission_examples/data_exemple_ID455607.csv"
     input_df = pd.read_csv(urlE)
 
-
+# Collects user input features into dataframe
+uploaded_file = st.sidebar.file_uploader("Upload de votre fichier CSV", type=["csv"])
+if uploaded_file is not None:
+    input_df = pd.read_csv(uploaded_file)
+else:
+    url="https://raw.githubusercontent.com/Sv3n-Sk4/pad_app/main/data_exemple.csv"
+    input_df = pd.read_csv(url)
 
 # Combines l'input utlisateur avec le dataset complet pour la phase d'encodage
 # model_data = "https://media.githubusercontent.com/media/Sv3n-Sk4/pad_app/main/model_data.csv"
